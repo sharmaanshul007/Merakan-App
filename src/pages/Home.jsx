@@ -1,7 +1,11 @@
 import React from 'react'
-import NavbarHeader from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
+import Listing from '../components/Listing'
 const Home = () => {
-  return (<div></div>
+  return (<div className='flex md:flex-row flex-col justify-between '>
+    <Sidebar></Sidebar>
+    <Listing></Listing>
+  </div>
   )
 }
 
