@@ -182,7 +182,9 @@ const Home = () => {
         setSelectedProducts(allProducts);
         return ;
     }
-    const newProducts = allProducts.filter((product)=>{selectedCategories.includes(product.category)});
+    console.log(selectedCategories);
+    const newProducts = allProducts.filter((product)=>(selectedCategories.includes(product.category)));
+    console.log(newProducts);
     setSelectedProducts(newProducts);
   },[selectedCategories]);
   return (<div className='flex md:flex-row flex-col justify-between '>

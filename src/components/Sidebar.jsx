@@ -12,7 +12,6 @@ const Sidebarcategory = ({allCategories}) => {
     : 
     (dispatch(addCategory(newCategory)))
   }
-  console.log(selectedCategories);
   return (
     <div className='max-w-[200px] flex flex-col flex-wrap w-[300px] items-center justify-center'>
         <h3 className='font-semibold text-gray-400 text-[20px] mb-3'>Categories</h3>
