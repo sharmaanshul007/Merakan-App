@@ -9,7 +9,7 @@ const Sidebarcategory = ({allCategories}) => {
             allCategories.map((category,index) => (
                 <div key={index} className='flex gap-2 items-center'>
                     <label htmlFor={`category-${index}`}>{category}</label>
-                    <input id={`category-${index}`} type='checkbox' >
+                    <input id={`category-${index}`} type='checkbox'>
                     </input>
                 </div>
             ))

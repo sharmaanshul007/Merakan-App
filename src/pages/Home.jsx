@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebarcategory from '../components/Sidebar'
 import Listing from '../components/Listing'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCategory, setCategory } from '../redux/slices/selectedCategory.jsx'
 const Home = () => { 
 
+  const dispatch = useDispatch();
+  const {selectedCategories} = useSelector((state)=>state.category);
   const allProducts = [
     {
       "id": 1,
@@ -167,11 +171,23 @@ const Home = () => {
   ]
   
   const allCategories = ["Electronics","Fashion","Appliances"]
+  const [selectedProducts,setSelectedProducts] = useState([]);
+  useEffect(()=>{
+    dispatch(setCategory([]));
+    setSelectedProducts(allProducts);
+  },[])
 
-
+  useEffect(()=>{
+    if(selectedCategories.length === 0){
+        setSelectedProducts(allProducts);
+        return ;
+    }
+    const newProducts = allProducts.filter((product)=>{selectedCategories.includes(product.category)});
+    setSelectedProducts(newProducts);
+  },[selectedCategories]);
   return (<div className='flex md:flex-row flex-col justify-between '>
     <Sidebarcategory allCategories={allCategories}></Sidebarcategory>
-    <Listing></Listing>
+    <Listing products={selectedProducts}></Listing>
   </div>
   )
 }
