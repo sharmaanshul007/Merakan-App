@@ -15,7 +15,7 @@ const NavbarHeader = () => {
         <Navbar.Toggle></Navbar.Toggle>
         <Navbar.Collapse>
             <NavbarLink href="/">Home</NavbarLink>
-            <NavbarLink href="/login">Login</NavbarLink>
+            <NavbarLink href="/cart">Cart</NavbarLink>
         </Navbar.Collapse>
     </Navbar>
   )

@@ -1,9 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { add } from '../redux/slices/cartSlice.jsx';
 const Products = () => {
+  const dispatch = useDispatch();
   const {product} = useSelector(state => state.specific);
-  console.log(product);
+  const handleCart = () => {
+    dispatch(add(product));
+    console.log("added to product");
+  }
   return (
     <div className="flex items-center justify-center p-6 min-h-screen bg-gray-100">
   <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
@@ -24,7 +28,7 @@ const Products = () => {
       {product.description}
     </div>
     <div className="flex justify-center">
-      <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
+      <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300" onClick={handleCart}>
         Add to Cart
       </button>
     </div>
