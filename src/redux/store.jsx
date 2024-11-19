@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import categoryReducer from './slices/selectedCategory.jsx'
-
+import cartReducer from './slices/cartSlice.jsx';
 const rootReducers = combineReducers({
-    category:categoryReducer
+    category:categoryReducer,
+    cart:cartReducer,
 })
 
 export const store = configureStore({
