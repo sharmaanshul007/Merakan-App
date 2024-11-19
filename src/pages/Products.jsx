@@ -1,12 +1,17 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { add } from '../redux/slices/cartSlice.jsx';
+import { add , remove} from '../redux/slices/cartSlice.jsx';
 const Products = () => {
+  const {cart} = useSelector((state)=>state.cart);
+  console.log(cart);
   const dispatch = useDispatch();
   const {product} = useSelector(state => state.specific);
   const handleCart = () => {
     dispatch(add(product));
-    console.log("added to product");
+    console.log("added");
+  }
+  const handleRemoveCart = () => {
+    dispatch(remove(product.id));
   }
   return (
     <div className="flex items-center justify-center p-6 min-h-screen bg-gray-100">
@@ -28,9 +33,16 @@ const Products = () => {
       {product.description}
     </div>
     <div className="flex justify-center">
-      <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300" onClick={handleCart}>
-        Add to Cart
-      </button>
+      {
+        (cart.some((p) => p.id === product.id)) 
+        ? 
+          
+          (<button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300" onClick={handleRemoveCart}>
+            Remove From Cart
+          </button>) :(<button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300" onClick={handleCart}>
+            Add to Cart
+          </button>) 
+      }
     </div>
   </div>
 </div>

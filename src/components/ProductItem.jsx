@@ -16,7 +16,7 @@ const ProductItem = ({product}) => {
       <span className='font-semibold font-serif mt-1'>{product.name}</span>
       <div className="w-[32vw] h-[30vh] sm:w-[19vw] sm:h-[30vh] overflow-hidden">
             <img
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-lg scale-95 hover:scale-100 transition-all duration-300"
             src={product.image}
             alt={product.name}
             />
@@ -25,10 +25,9 @@ const ProductItem = ({product}) => {
       <span className='font-serif mb-4 p-2'>{smallDescription}</span>
       <div className='mt-auto mb-4'>
         <Link to={`/products/${product.id}`}>
-          <div className='border px-3 py-1 rounded-lg bg-amber-400' onClick={handleProduct}>View Product</div>
+          <div className='border px-3 py-1 rounded-lg bg-amber-400 hover:transform hover:translate-x-1 hover:scale-110' onClick={handleProduct}>View Product</div>
         </Link>
         <div>
-          
         </div>
       </div>
       

@@ -10,7 +10,8 @@ export const CartSlice = createSlice({
             state.cart.push(action.payload) 
         },
         remove : (state,action) => { 
-            state.cart.filter((item) => item.id !== action.payload)
+            const newArray = state.cart.filter((item) => item.id !== action.payload);
+            state.cart = newArray;
         }
     }
 });
