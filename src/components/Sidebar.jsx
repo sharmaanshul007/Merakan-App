@@ -13,7 +13,7 @@ const Sidebarcategory = ({allCategories}) => {
     (dispatch(addCategory(newCategory)))
   }
   return (
-    <div className=' flex flex-col flex-wrap md:w-[300px] items-center gap-4  md:h-screen border-b-2 md:border-r-2 md:sticky md:top-0 '>
+    <div className=' flex flex-col flex-wrap md:w-[400px] items-center gap-4  md:h-screen border-b-2 md:border-r-2 md:sticky md:top-0 '>
         <h3 className='font-semibold text-gray-400 text-[20px] mb-3'>Categories</h3>
         {
             allCategories.map((category,index) => (

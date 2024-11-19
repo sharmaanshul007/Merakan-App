@@ -3,6 +3,8 @@ import Sidebarcategory from '../components/Sidebar'
 import Listing from '../components/Listing'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCategory, setCategory } from '../redux/slices/selectedCategory.jsx'
+import { IoIosSearch } from 'react-icons/io'
+import { TextInput } from 'flowbite-react'
 const Home = () => { 
 
   const dispatch = useDispatch();
@@ -177,6 +179,25 @@ const Home = () => {
     setSelectedProducts(allProducts);
   },[])
 
+  const handleClick = (e) => {
+    console.log(e.target);
+    e.preventDefault();
+    const name = document.querySelector('input[type="text"]').value.toLowerCase().replaceAll(' ', '');
+    if(name.length === 0){
+      setSelectedProducts(allProducts);
+      return ;
+    }
+    console.log(name);
+    console.log(name);
+    const newArray = selectedProducts.filter((product) =>
+      product.name.toLowerCase().replaceAll(' ', '') === name
+  );    
+  if(newArray.length === 0){
+    return ;
+  }
+  setSelectedProducts(newArray);
+  }
+
   useEffect(()=>{
     if(selectedCategories.length === 0){
         setSelectedProducts(allProducts);
@@ -192,7 +213,14 @@ const Home = () => {
   },[selectedCategories]);
   return (<div className='flex md:flex-row flex-col justify-between '>
     <Sidebarcategory allCategories={allCategories}></Sidebarcategory>
+    <div className='flex flex-col gap-2 mt-4'>
+    <form className="flex justify-center items-center gap-2 w-[100%]">
+            <TextInput placeholder="Search product" type="text" ></TextInput>
+            <button type='button' onClick={handleClick}><IoIosSearch ></IoIosSearch></button>
+        </form>
     <Listing products={selectedProducts}></Listing>
+    </div>
+    
   </div>
   )
 }
